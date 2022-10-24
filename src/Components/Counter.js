@@ -6,8 +6,8 @@ const Counter = () => {
 
   const dispatch = useDispatch();
   //by using useSelector the component is automatically subscribed to the store and gets the latest state snapshot
-  const counter = useSelector((state) => state.counter);
-  const isVisible = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const isVisible = useSelector((state) => state.counter.showCounter);
 
   const increaseAmount = () => {
     dispatch(counterActions.increment());
