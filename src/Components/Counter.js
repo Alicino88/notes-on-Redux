@@ -6,6 +6,7 @@ const Counter = () => {
   const dispatch = useDispatch();
   //by using useSelector the component is automatically subscribed to the store and gets the latest state snapshot
   const counter = useSelector((state) => state.counter);
+  const isVisible = useSelector((state) => state.showCounter);
 
   const increaseAmount = () => {
     dispatch({ type: "increment" });
@@ -23,12 +24,14 @@ const Counter = () => {
 
     dispatch({ type: "addMultiple", amount: addedAmountNumber });
   };
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: "toggle" });
+  };
 
   return (
     <main>
       <h1>Redux Counter</h1>
-      <div>{counter}</div>
+      {isVisible && <div>{counter}</div>}
       <div>
         <button onClick={increaseAmount}>increment by one</button>
 
