@@ -1,12 +1,36 @@
 import { createStore } from "redux";
+import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const initialState = { counter: 0, showCounter: true };
 
-//the new state object overrides the previous one, therefore when updating a piece of state we also need to set the other states as well
+//redux toolkit uses a package called Immer that prevents overriding the existing state
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: initialState,
+  reducers: {
+    increment(state) {
+      state.counter++;
+    },
+    decrement(state) {
+      state.counter--;
+    },
+    addMultiple(state, action) {
+      state.counter = state.counter + action.payload;
+    },
+    toggleCounter(state) {
+      state.showCounter = !state.showCounter;
+    },
+  },
+});
 
+/*BELOW REDUX LOGIC WITHOUT REDUX-TOOLKIT
+
+
+//the new state object overrides the previous one, therefore when updating a piece of state we also need to set the other states as well
 const counterReducer = (state = initialState, action) => {
   if (action.type === "increment") {
     //with redux we never change the existing state but we always override it by returning a brand new state object
+    //this has to do with the fact that objects are reference types
     //inside this block we cannot write:
     //state.counter++
     //return state
@@ -32,7 +56,11 @@ const counterReducer = (state = initialState, action) => {
 
   return state;
 };
+*/
 
-const store = createStore(counterReducer);
-
+const store = configureStore({
+  reducer: counterSlice.reducer,
+});
+//redux toolkit automatically creates actions from reducers names
+export const counterActions = counterSlice.actions;
 export default store;

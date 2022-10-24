@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useRef } from "react";
+import { counterActions } from "../Store";
 const Counter = () => {
   const addedAmountRef = useRef();
 
@@ -9,11 +10,11 @@ const Counter = () => {
   const isVisible = useSelector((state) => state.showCounter);
 
   const increaseAmount = () => {
-    dispatch({ type: "increment" });
+    dispatch(counterActions.increment());
   };
 
   const decreaseAmount = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
   };
 
   const addToCounter = (e) => {
@@ -21,11 +22,11 @@ const Counter = () => {
 
     const addedAmount = addedAmountRef.current.value;
     const addedAmountNumber = +addedAmount;
-
-    dispatch({ type: "addMultiple", amount: addedAmountNumber });
+    //the addedAmountNumber is stored inside a field named payload by default
+    dispatch(counterActions.addMultiple(addedAmountNumber));
   };
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
