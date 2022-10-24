@@ -30,13 +30,12 @@ const authSlice = createSlice({
   initialState: initialAuthState,
   reducers: {
     login(state) {
-        state.isAuthenticated = true
+      state.isAuthenticated = true;
     },
     logout(state) {
-        state.isAuthenticated = false
-    }
-
-
+      state.isAuthenticated = false;
+    },
+  },
 });
 
 /*BELOW REDUX LOGIC WITHOUT REDUX-TOOLKIT
@@ -74,12 +73,11 @@ const counterReducer = (state = initialState, action) => {
 };
 */
 
-
 //even with multiple slices, configureStore is called only once:
 const store = configureStore({
-  reducer: {counter: counterSlice.reducer, auth:authSlice.reducer}
+  reducer: { counter: counterSlice.reducer, auth: authSlice.reducer },
 });
 //redux toolkit automatically creates actions from reducers names
 export const counterActions = counterSlice.actions;
-export const authActions = authSlice.actions
+export const authActions = authSlice.actions;
 export default store;
