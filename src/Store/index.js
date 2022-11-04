@@ -1,6 +1,7 @@
-import { createStore } from "redux";
 import { createSlice, configureStore } from "@reduxjs/toolkit";
+//each slice controls a separate state
 
+//the initial state value for the counter:
 const initialCounterState = { counter: 0, showCounter: true };
 
 //redux toolkit uses a package called Immer that prevents overriding the existing state
@@ -23,6 +24,7 @@ const counterSlice = createSlice({
   },
 });
 
+//the initial state value for being authenticated:
 const initialAuthState = { isAuthenticated: false };
 
 const authSlice = createSlice({
