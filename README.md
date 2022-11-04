@@ -10,3 +10,6 @@ The code implements the following concepts:
 -useSelector </br>
 -createSlice </br>
 -configureStore </br>
+
+
+The application still needs to be styled
