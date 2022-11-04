@@ -4,9 +4,9 @@ I coded this project while following along the Complete React Course I am follow
 
 The code implements the following concepts:
 
--Redux
--Redux-toolkit
--useDispatch
--useSelector
--createSlice
--configureStore
+-Redux </br>
+-Redux-toolkit </br>
+-useDispatch </br>
+-useSelector </br>
+-createSlice </br>
+-configureStore </br>
